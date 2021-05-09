@@ -2,9 +2,9 @@
 <h1>Sign Up</h1>
 <%= form_with model: @user, url: sign_up_path do |form|%>
  
-  <% if @user.errors.any?%>
+  <% if form.object.errors.any?%>
     <div class="alert alert-danger">
-    <% @user.errors.full_messages.each do |message|%>
+    <% form.object.errors.full_messages.each do |message|%>
     <div> <%= message%> </div>
     <%end%>
     </div>
@@ -23,5 +23,9 @@
   </div>
   <div class="mb-3">
   <%= form.submit "Sign Up", class: "btn btn-primary" %>
+  </div>
+
+  <div>
+  <%= link_to 'Forgot Password', password_reset_path %>
   </div>
 <%end%>
