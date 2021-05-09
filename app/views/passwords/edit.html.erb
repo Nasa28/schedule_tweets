@@ -1,16 +1,22 @@
 <h1>Edit Password</h1>
-
-<%= form_with  url: edit_password_path do |form|%>
+<%= form_with model: Current.user, url: edit_password_path do |form|%>
  
-   <div class="mb-3">
-  <%= form.label :email%>
-  <%= form.text_field :email, class: "form-control", placeholder: "example@gmail.com"%>
-  </div>
+  <% if form.object.errors.any?%>
+    <div class="alert alert-danger">
+    <% form.object.errors.full_messages.each do |message|%>
+    <div> <%= message%> </div>
+    <%end%>
+    </div>
+  <%end%>
   <div class="mb-3">
   <%= form.label :password%>
   <%= form.password_field :password, class: "form-control", placeholder: "password"%>
   </div>
   <div class="mb-3">
-  <%= form.submit "Sign In", class: "btn btn-primary" %>
+  <%= form.label :password_confirmation%>
+  <%= form.password_field :password_confirmation, class: "form-control", placeholder: "Re-enter password"%>
+  </div>
+  <div class="mb-3">
+  <%= form.submit "Sign Up", class: "btn btn-primary" %>
   </div>
 <%end%>
