@@ -1,4 +1,4 @@
-class Password < ApplicationController
+class PasswordsController < ApplicationController
 before_action :require_user_sign_in!
   def edit 
 
